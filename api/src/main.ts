@@ -18,6 +18,10 @@ async function bootstrap() {
   // Add validation
   app.useGlobalPipes(new ValidationPipe());
 
+  // Enable CORS
+  app.enableCors();
+
+  // Start listening for connections
   await app.listen(3000);
 }
 bootstrap().then(() => {

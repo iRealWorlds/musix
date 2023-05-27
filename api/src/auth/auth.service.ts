@@ -38,7 +38,9 @@ export class AuthService {
         const payload = new JwtPayloadDto(user);
 
         // Create a signed token
-        const token = await this._jwtService.signAsync({ ...payload });
+        const token = await this._jwtService.signAsync({ ...payload }, {
+            expiresIn: 3600
+        });
 
         // Create a new AuthSession
         return new AuthSessionDto(token, user);
