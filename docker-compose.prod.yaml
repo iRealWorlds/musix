@@ -1,0 +1,13 @@
+name: 'dt-project'
+services:
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+
+  webapp:
+    build:
+      context: ./webapp
+      dockerfile: Dockerfile
+    ports:
+      - 4200:80

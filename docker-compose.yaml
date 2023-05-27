@@ -1,9 +1,7 @@
 name: 'dt-project'
 services:
   api:
-    build:
-      context: ./api
-      dockerfile: Dockerfile
+    image: dt-project/api:latest
     env_file:
       - .env
     depends_on:
@@ -12,16 +10,9 @@ services:
       - mariadb
     ports:
       - 3000:3000
-      - 9229:9229
 
   webapp:
-    build:
-      context: ./webapp
-      dockerfile: Dockerfile
-    volumes:
-      - ./webapp:/app/src
-    ports:
-      - 4200:80
+    image: dt-project/webapp:latest
     links:
       - api
 

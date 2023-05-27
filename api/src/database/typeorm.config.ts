@@ -2,6 +2,7 @@ import { ConfigService } from '@nestjs/config';
 import { MysqlConnectionOptions } from "typeorm/driver/mysql/MysqlConnectionOptions";
 import { MixedList } from "typeorm";
 import { EntitySchema } from "typeorm/entity-schema/EntitySchema";
+import { join } from "path";
 
 export class TypeOrmConfig implements MysqlConnectionOptions {
     readonly database: string;
@@ -21,8 +22,9 @@ export class TypeOrmConfig implements MysqlConnectionOptions {
         this.username = configService.getOrThrow<string>('DB_USER');
         this.password = configService.getOrThrow<string>('DB_PASSWORD');
         this.database = configService.getOrThrow<string>('DB_NAME');
-        this.migrations = ['src/database/migrations/**/*{.ts,.js}'];
-        this.entities = ['src/**/*.entity{.ts,.js}'];
+        this.migrations = [join(__dirname, 'migrations', '**', '*.{ts,js}')];
+        this.entities = [join(__dirname, '..', '**', '*.entity.{ts,js}')];
         this.autoLoadEntities = true;
+        console.log(this);
     }
 }

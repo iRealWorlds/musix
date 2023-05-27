@@ -1,0 +1,33 @@
+name: 'dt-project'
+services:
+  api:
+    build:
+      dockerfile: Dockerfile
+      context: ./api
+      # Only build development stage from Dockerfile
+      target: build
+    # Mount our host dir to the docker container
+    # Mount api directory (./api) to (:) docker container (/thomas/src/app)
+    # Reflect File changes from host to container
+    volumes:
+      - ./api:/api/src/app
+      - /api/src/app/node_modules/
+    # RUN in debug mode: npm run start:debug --> Also start your vscode debugger
+    # Run in dev mode: npm run start:dev
+    command: npm run start:debug
+    ports:
+      - 3000:3000
+      - 9229:9229
+
+  # Our Angular Frontend
+  webapp:
+    build:
+      dockerfile: Dockerfile
+      context: ./webapp
+      target: build
+    command: npm run start
+    ports:
+      - 4200:4200
+    volumes:
+      - ./webapp:/app/src
+      - /app/src/node_modules
