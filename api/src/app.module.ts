@@ -6,6 +6,7 @@ import { AppService } from "@api/app.service";
 import { AuthModule } from "@api/auth/auth.module";
 import { UserModule } from "@api/user/user.module";
 import { TypeOrmConfig } from "@api/database/typeorm.config";
+import { ArtistsModule } from './artists/artists.module';
 
 @Module({
   imports: [
@@ -17,7 +18,8 @@ import { TypeOrmConfig } from "@api/database/typeorm.config";
       inject: [ConfigService]
     }),
     AuthModule,
-    UserModule
+    UserModule,
+    ArtistsModule
   ],
   controllers: [AppController],
   providers: [AppService],

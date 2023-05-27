@@ -1,0 +1,62 @@
+<div class="w-main-content mx-auto">
+    <div class="mb-5">
+        <a routerLink="/artists" mat-flat-button class="inline-flex items-center gap-1">
+            <mat-icon>arrow_left</mat-icon>
+            Back to list
+        </a>
+    </div>
+    <form [formGroup]="artistForm" (ngSubmit)="updateEntity()">
+        <mat-card *ngIf="details$ | async as artist" class="w-full">
+            <mat-card-header class="flex items-center bg-gradient-to-b from-green-500 from-50% to-50% to-transparent py-10 gap-5">
+                <a [routerLink]="['/artists/details', artist.key]">
+                    <img [ngSrc]="'https://ui-avatars.com/api/?name=' + artist.name + '&background=random'" [alt]="artist.name" width="64" height="64" class="rounded border shadow">
+                </a>
+                <div class="">
+                    <mat-card-title class="text-white pb-1">
+                        <a [routerLink]="['/artists/details', artist.key]">
+                            {{ artist.name }}
+                        </a>
+                    </mat-card-title>
+                    <mat-card-subtitle class="pt-1">
+                        Added on {{ artist.createdAt | date }}
+                    </mat-card-subtitle>
+                </div>
+            </mat-card-header>
+            <mat-card-content class="p-5 flex flex-col gap-5">
+                <!-- Name -->
+                <mat-form-field>
+                    <mat-label>
+                        Name
+                    </mat-label>
+                    <input type="text" matInput [formControl]="artistForm.controls.name" />
+                    <mat-error *ngFor="let error of artistForm.controls.name.errors | keyvalue">
+                        <app-field-validation-errors [error]="error.key"></app-field-validation-errors>
+                    </mat-error>
+                </mat-form-field>
+
+                <!-- Description -->
+                <mat-form-field>
+                    <mat-label>
+                        Description
+                    </mat-label>
+                    <textarea matInput [formControl]="artistForm.controls.description"></textarea>
+                    <mat-error *ngFor="let error of artistForm.controls.description.errors | keyvalue">
+                        <app-field-validation-errors [error]="error.key"></app-field-validation-errors>
+                    </mat-error>
+                </mat-form-field>
+            </mat-card-content>
+            <mat-card-actions align="end" class="p-5 flex items-center gap-5">
+                <button type="button" mat-flat-button color="warn" (click)="deleteEntity()" [disabled]="artistForm.disabled">
+                    <mat-icon>delete</mat-icon>
+                    <ng-container *ngIf="loading === false">Delete</ng-container>
+                    <ng-container *ngIf="loading === true">Deleting</ng-container>
+                </button>
+                <button type="submit" mat-flat-button color="primary" [disabled]="artistForm.disabled">
+                    <mat-icon>save</mat-icon>
+                    <ng-container *ngIf="loading === false">Save</ng-container>
+                    <ng-container *ngIf="loading === true">Saving</ng-container>
+                </button>
+            </mat-card-actions>
+        </mat-card>
+    </form>
+</div>

@@ -6,6 +6,7 @@ export class EnvironmentConfig {
         endpoints: {
             authSessions: "/auth-sessions",
             users: "/users",
+            artists: '/artists',
         }
     };
 

@@ -1,4 +1,4 @@
-import { User } from "@api/user/user.entity";
+import { User } from "@api/database/entities/user.entity";
 
 export class UserDto {
     key: number;

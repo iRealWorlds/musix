@@ -3,7 +3,7 @@ import { UserService } from "@api/user/user.service";
 import { JwtService } from "@nestjs/jwt";
 import * as bcrypt from 'bcrypt';
 import { AuthSessionDto } from "@api/auth/dtos/auth-session.dto";
-import { User } from "@api/user/user.entity";
+import { User } from "@api/database/entities/user.entity";
 import { ConfigService } from "@nestjs/config";
 import { JwtPayloadDto } from "@api/auth/dtos/jwt-payload.dto";
 
@@ -54,7 +54,6 @@ export class AuthService {
      */
     async getIdentityFromRequest(request: Request): Promise<User|null> {
         const token = this._extractTokenFromHeader(request);
-        console.debug("found token", token);
 
         // If no token was provided, the request is unauthorized.
         if (!token) {

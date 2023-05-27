@@ -1,0 +1,20 @@
+<mat-card *ngIf="artist">
+    <mat-card-header class="flex items-center justify-center bg-gradient-to-b from-green-500 from-50% to-50% to-transparent pt-10 pb-5">
+        <a [routerLink]="['/artists/details', artist.key]">
+            <img [ngSrc]="'https://ui-avatars.com/api/?name=' + artist.name + '&background=random'" [alt]="artist.name" width="64" height="64" class="rounded border shadow">
+        </a>
+    </mat-card-header>
+    <mat-card-content>
+        <mat-card-title class="text-center text-white mb-3">
+            <a [routerLink]="['/artists/details', artist.key]">
+                {{ artist.name }}
+            </a>
+        </mat-card-title>
+        <p class="whitespace-pre-wrap text-sm text-gray-300 text-justify" *ngIf="artist.description?.length; else noDescriptionTemplate">{{ artist.description }}</p>
+        <ng-template #noDescriptionTemplate>
+            <p class="text-gray-400 font-italic text-center text-sm">
+                No description
+            </p>
+        </ng-template>
+    </mat-card-content>
+</mat-card>

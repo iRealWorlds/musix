@@ -1,4 +1,4 @@
-import { User } from "@api/user/user.entity";
+import { User } from "@api/database/entities/user.entity";
 import * as crypto from "crypto";
 
 export class JwtPayloadDto {

@@ -1,7 +1,7 @@
 import { Body, Controller, HttpCode, HttpStatus, Post } from '@nestjs/common';
 import { UserCreateDto } from "@api/user/dtos/user-create.dto";
 import { UserService } from "@api/user/user.service";
-import { User } from "@api/user/user.entity";
+import { User } from "@api/database/entities/user.entity";
 import * as bcrypt from "bcrypt";
 import { UserDto } from "@api/user/dtos/user.dto";
 

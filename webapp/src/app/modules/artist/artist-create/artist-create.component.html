@@ -1,0 +1,48 @@
+<form [formGroup]="artistForm" (ngSubmit)="submitForm()" class="w-main-content mx-auto">
+    <div class="mb-5">
+        <a routerLink="/artists" mat-flat-button class="inline-flex items-center gap-1">
+            <mat-icon>arrow_left</mat-icon>
+            Back to list
+        </a>
+    </div>
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title class="text-3xl text-white">
+                New Artist
+            </mat-card-title>
+            <mat-card-subtitle>
+                Fill in the form to add a new artist to your library.
+            </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content class="p-5 flex flex-col gap-5">
+            <!-- Name -->
+            <mat-form-field>
+                <mat-label>
+                    Name
+                </mat-label>
+                <input type="text" matInput [formControl]="artistForm.controls.name" />
+                <mat-error *ngFor="let error of artistForm.controls.name.errors | keyvalue">
+                    <app-field-validation-errors [error]="error.key"></app-field-validation-errors>
+                </mat-error>
+            </mat-form-field>
+
+            <!-- Description -->
+            <mat-form-field>
+                <mat-label>
+                    Description
+                </mat-label>
+                <textarea matInput [formControl]="artistForm.controls.description"></textarea>
+                <mat-error *ngFor="let error of artistForm.controls.description.errors | keyvalue">
+                    <app-field-validation-errors [error]="error.key"></app-field-validation-errors>
+                </mat-error>
+            </mat-form-field>
+        </mat-card-content>
+        <mat-card-actions class="p-5" align="end">
+            <button type="submit" mat-flat-button color="primary" [disabled]="artistForm.disabled">
+                <mat-icon>save</mat-icon>
+                <ng-container *ngIf="loading === false">Save</ng-container>
+                <ng-container *ngIf="loading === true">Saving</ng-container>
+            </button>
+        </mat-card-actions>
+    </mat-card>
+</form>

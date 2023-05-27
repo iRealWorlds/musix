@@ -4,7 +4,7 @@ import { AppComponent } from "src/app/app.component";
 
 export const appRouting: Route[] = [
     // Redirect '/' to '/home'
-    { path: '', redirectTo: '/home', pathMatch: 'full' },
+    { path: '', redirectTo: '/artists/list', pathMatch: 'full' },
 
     // Routes that require the user to be a guest
     {
@@ -22,6 +22,7 @@ export const appRouting: Route[] = [
         canActivate: [AuthGuard],
         children: [
             { path: 'auth/sign-out', loadChildren: () => import('src/app/modules/auth/sign-out/sign-out.module').then(m => m.SignOutModule) },
+            { path: 'artists', loadChildren: () => import('src/app/modules/artist/artist.module').then(m => m.ArtistModule) },
         ],
     },
 
