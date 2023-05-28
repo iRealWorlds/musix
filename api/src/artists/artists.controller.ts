@@ -6,7 +6,7 @@ import {
     HttpStatus,
     NotFoundException,
     Param, Patch,
-    Post,
+    Post, Query,
     Req,
     UnauthorizedException, UseGuards
 } from '@nestjs/common';
@@ -20,10 +20,8 @@ import { ArtistDto } from "@api/artists/dtos/artist.dto";
 import { ApiTags } from "@nestjs/swagger";
 import { ArtistUpdateRequestDto } from "@api/artists/dtos/artist-update-request.dto";
 import { AuthGuard } from "@api/auth/auth.guard";
+import { ArtistIndexRequestDto } from "@api/artists/dtos/artist-index-request.dto";
 
-/**
- *
- */
 @ApiTags("Artists")
 @Controller('artists')
 @UseGuards(AuthGuard)
@@ -36,19 +34,28 @@ export class ArtistsController {
 
     @Get()
     @HttpCode(HttpStatus.OK)
-    async index(@Req() request: Request): Promise<ArtistDto[]> {
+    async index(@Req() request: Request, @Query() params: ArtistIndexRequestDto): Promise<ArtistDto[]> {
         if (!('identity' in request)) {
-            console.log((request as unknown as any).identity);
             throw new UnauthorizedException()
         }
 
-        const artists = await this._artistRepository.find({
+        let artists = await this._artistRepository.find({
             relations: ['user'],
             where: {
                 user: {
                     id: (request.identity as User).id
                 }
             }
+        });
+
+        artists = artists.filter(artist => {
+            if (params.query) {
+                if (!artist.name.toLowerCase().includes(params.query.toLowerCase())) {
+                    return false;
+                }
+            }
+
+            return true;
         });
 
         return artists.map(a => new ArtistDto(a));

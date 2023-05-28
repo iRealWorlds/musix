@@ -25,6 +25,5 @@ export class TypeOrmConfig implements MysqlConnectionOptions {
         this.migrations = [join(__dirname, 'migrations', '**', '*.{ts,js}')];
         this.entities = [join(__dirname, '..', '**', '*.entity.{ts,js}')];
         this.autoLoadEntities = true;
-        console.log(this);
     }
 }

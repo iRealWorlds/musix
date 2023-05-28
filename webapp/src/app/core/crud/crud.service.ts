@@ -3,7 +3,7 @@ import { BehaviorSubject, Observable, tap } from "rxjs";
 import { EnvironmentConfig } from "src/app/core/environment/environment.config.model";
 import { HttpClient } from "@angular/common/http";
 
-export abstract class CrudService<TModel extends { key: string|number}, TModelCreateRequest, TModelUpdateRequest> extends ApiService {
+export abstract class CrudService<TModel extends { key: string|number}, TModelCreateRequest, TModelUpdateRequest, TModelIndexRequest = any> extends ApiService {
     protected abstract endpoint: string;
 
     private readonly _all = new BehaviorSubject<TModel[]|undefined>(undefined)
@@ -30,9 +30,11 @@ export abstract class CrudService<TModel extends { key: string|number}, TModelCr
         return this._details.asObservable();
     }
 
-    getAll(): Observable<TModel[]> {
+    getAll(data?: TModelIndexRequest): Observable<TModel[]> {
         const uri = this.buildApiEndpointUri(this.endpoint);
-        return this._http.get<TModel[]>(uri).pipe(
+        return this._http.get<TModel[]>(uri, {
+          params: data ?? {}
+        }).pipe(
             tap(entities => this._all.next(entities))
         );
     }

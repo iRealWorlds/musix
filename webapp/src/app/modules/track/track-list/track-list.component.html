@@ -1,0 +1,61 @@
+<div class="w-main-content mx-auto" *ngIf="all$ | async as entities">
+  <div class="flex items-center justify-between mb-7">
+    <div>
+      <h2 class="text-3xl text-white">
+        Your library
+      </h2>
+      <p class="text-gray-400">
+        Tracks you've added tot your library.
+      </p>
+    </div>
+
+    <a routerLink="/tracks/create" mat-flat-button color="accent">
+      <mat-icon>add</mat-icon>
+      New
+    </a>
+  </div>
+
+  <table mat-table [dataSource]="entities" class="mat-elevation-z8">
+    <!-- Position Column -->
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef> No. </th>
+      <td mat-cell *matCellDef="let element"> {{element.key}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let element" class="py-2">
+        <div class="flex items-center gap-3">
+          <a [routerLink]="['/tracks/details', element.key]">
+            <img [ngSrc]="'https://ui-avatars.com/api/?name=' + element.name + '&background=random'" [alt]="element.name" width="36" height="36"
+                 class="rounded shadow">
+          </a>
+          <div>
+            <h4>
+              {{element.name}}
+            </h4>
+            <a [routerLink]="['/artists/details', element.artist.key]" class="text-sm text-gray-400">
+              {{ element.artist.name }}
+            </a>
+          </div>
+        </div>
+      </td>
+    </ng-container>
+
+    <!-- Published at -->
+    <ng-container matColumnDef="publishedAt">
+      <th mat-header-cell *matHeaderCellDef> Publication date </th>
+      <td mat-cell *matCellDef="let element"> {{ element.publishedAt | date }} </td>
+    </ng-container>
+
+    <!-- Created at -->
+    <ng-container matColumnDef="createdAt">
+      <th mat-header-cell *matHeaderCellDef> Added on </th>
+      <td mat-cell *matCellDef="let element"> {{ element.createdAt | date }} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>

@@ -22,6 +22,6 @@ export class User {
     @Column()
     lastName: string;
 
-    @OneToMany(() => Artist, (artist) => artist.user)
+    @OneToMany(() => Artist, (artist) => artist.user, { eager: true })
     artists: Artist[]
 }

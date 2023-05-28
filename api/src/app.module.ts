@@ -7,6 +7,7 @@ import { AuthModule } from "@api/auth/auth.module";
 import { UserModule } from "@api/user/user.module";
 import { TypeOrmConfig } from "@api/database/typeorm.config";
 import { ArtistsModule } from './artists/artists.module';
+import { TracksModule } from './tracks/tracks.module';
 
 @Module({
   imports: [
@@ -19,7 +20,8 @@ import { ArtistsModule } from './artists/artists.module';
     }),
     AuthModule,
     UserModule,
-    ArtistsModule
+    ArtistsModule,
+    TracksModule
   ],
   controllers: [AppController],
   providers: [AppService],

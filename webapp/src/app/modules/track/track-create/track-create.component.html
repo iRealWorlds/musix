@@ -1,0 +1,59 @@
+<form [formGroup]="trackForm" (ngSubmit)="submitForm()" class="w-main-content mx-auto">
+  <div class="mb-5">
+    <a routerLink="/tracks" mat-flat-button class="inline-flex items-center gap-1">
+      <mat-icon>arrow_left</mat-icon>
+      Back to list
+    </a>
+  </div>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title class="text-3xl text-white">
+        New Track
+      </mat-card-title>
+      <mat-card-subtitle>
+        Fill in the form to add a new track to your library.
+      </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content class="p-5 flex flex-col gap-5">
+      <!-- Name -->
+      <mat-form-field>
+        <mat-label>
+          Name
+        </mat-label>
+        <input type="text" matInput [formControl]="trackForm.controls.name" />
+        <mat-error *ngFor="let error of trackForm.controls.name.errors | keyvalue">
+          <app-field-validation-errors [error]="error.key"></app-field-validation-errors>
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Category -->
+      <app-searchable-model-input
+        [formControl]="trackForm.controls.artist"
+        label="Artist"
+        [displayFn]="formatArtistSuggestion"
+        [searchFn]="searchArtists.bind(this)"></app-searchable-model-input>
+      <div class="text-red-500 ml-3 text-sm" *ngFor="let value of trackForm.controls.artist.errors | keyvalue">
+        <app-field-validation-errors [error]="value.key" *ngIf="trackForm.controls.artist.touched || trackForm.controls.artist.dirty"></app-field-validation-errors>
+      </div>
+      <div class="mb-2" *ngIf="!(trackForm.controls.artist.errors | keyvalue)?.length"></div>
+
+      <!-- Published at -->
+      <mat-form-field>
+        <mat-label>
+          Published at
+        </mat-label>
+        <input type="date" matInput [formControl]="trackForm.controls.publishedAt" />
+        <mat-error *ngFor="let error of trackForm.controls.publishedAt.errors | keyvalue">
+          <app-field-validation-errors [error]="error.key"></app-field-validation-errors>
+        </mat-error>
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-actions class="p-5" align="end">
+      <button type="submit" mat-flat-button color="primary" [disabled]="trackForm.disabled">
+        <mat-icon>save</mat-icon>
+        <ng-container *ngIf="loading === false">Save</ng-container>
+        <ng-container *ngIf="loading === true">Saving</ng-container>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</form>

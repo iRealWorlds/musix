@@ -1047,122 +1047,170 @@ musix|schema||musix||UPDATE|G</Grants>
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_general_ci</CollationName>
     </table>
-    <table id="329" parent="325" name="users">
+    <table id="329" parent="325" name="tracks">
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_general_ci</CollationName>
     </table>
-    <column id="330" parent="327" name="id">
-      <AutoIncrement>1</AutoIncrement>
-      <DasType>int(11)|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>1</Position>
-    </column>
-    <column id="331" parent="327" name="name">
-      <DasType>varchar(255)|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>2</Position>
-    </column>
-    <column id="332" parent="327" name="description">
-      <DasType>varchar(255)|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>3</Position>
-    </column>
-    <column id="333" parent="327" name="createdAt">
-      <DasType>datetime|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>4</Position>
-    </column>
-    <column id="334" parent="327" name="userId">
-      <DasType>int(11)|0s</DasType>
-      <Position>5</Position>
-    </column>
-    <foreign-key id="335" parent="327" name="FK_f7bd9114dc2849a90d39512911b">
-      <ColNames>userId</ColNames>
-      <RefColNames>id</RefColNames>
-      <RefTableName>users</RefTableName>
-    </foreign-key>
-    <index id="336" parent="327" name="PRIMARY">
-      <ColNames>id</ColNames>
-      <Type>btree</Type>
-      <Unique>1</Unique>
-    </index>
-    <index id="337" parent="327" name="FK_f7bd9114dc2849a90d39512911b">
-      <ColNames>userId</ColNames>
-      <Type>btree</Type>
-    </index>
-    <key id="338" parent="327" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <Primary>1</Primary>
-      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
-    </key>
-    <column id="339" parent="328" name="id">
-      <AutoIncrement>4</AutoIncrement>
-      <DasType>int(11)|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>1</Position>
-    </column>
-    <column id="340" parent="328" name="timestamp">
-      <DasType>bigint(20)|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>2</Position>
-    </column>
-    <column id="341" parent="328" name="name">
-      <DasType>varchar(255)|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>3</Position>
-    </column>
-    <index id="342" parent="328" name="PRIMARY">
-      <ColNames>id</ColNames>
-      <Type>btree</Type>
-      <Unique>1</Unique>
-    </index>
-    <key id="343" parent="328" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <Primary>1</Primary>
-      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
-    </key>
-    <column id="344" parent="329" name="id">
+    <table id="330" parent="325" name="users">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_general_ci</CollationName>
+    </table>
+    <column id="331" parent="327" name="id">
       <AutoIncrement>3</AutoIncrement>
       <DasType>int(11)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="345" parent="329" name="emailAddress">
+    <column id="332" parent="327" name="name">
       <DasType>varchar(255)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="346" parent="329" name="passwordHash">
+    <column id="333" parent="327" name="description">
       <DasType>varchar(255)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <column id="347" parent="329" name="firstName">
-      <DasType>varchar(255)|0s</DasType>
+    <column id="334" parent="327" name="createdAt">
+      <DasType>datetime|0s</DasType>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
-    <column id="348" parent="329" name="lastName">
-      <DasType>varchar(255)|0s</DasType>
-      <NotNull>1</NotNull>
+    <column id="335" parent="327" name="userId">
+      <DasType>int(11)|0s</DasType>
       <Position>5</Position>
     </column>
-    <index id="349" parent="329" name="PRIMARY">
+    <foreign-key id="336" parent="327" name="FK_f7bd9114dc2849a90d39512911b">
+      <ColNames>userId</ColNames>
+      <RefColNames>id</RefColNames>
+      <RefTableName>users</RefTableName>
+    </foreign-key>
+    <index id="337" parent="327" name="PRIMARY">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="350" parent="329" name="IDX_0a15e52405edda3ea73124ab40">
-      <ColNames>emailAddress</ColNames>
+    <index id="338" parent="327" name="FK_f7bd9114dc2849a90d39512911b">
+      <ColNames>userId</ColNames>
       <Type>btree</Type>
-      <Unique>1</Unique>
     </index>
-    <key id="351" parent="329" name="PRIMARY">
+    <key id="339" parent="327" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <key id="352" parent="329" name="IDX_0a15e52405edda3ea73124ab40">
+    <column id="340" parent="328" name="id">
+      <AutoIncrement>5</AutoIncrement>
+      <DasType>int(11)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="341" parent="328" name="timestamp">
+      <DasType>bigint(20)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="342" parent="328" name="name">
+      <DasType>varchar(255)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <index id="343" parent="328" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="344" parent="328" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="345" parent="329" name="id">
+      <AutoIncrement>1</AutoIncrement>
+      <DasType>int(11)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="346" parent="329" name="name">
+      <DasType>varchar(255)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="347" parent="329" name="publishedAt">
+      <DasType>datetime|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <column id="348" parent="329" name="createdAt">
+      <DasType>datetime|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+    </column>
+    <column id="349" parent="329" name="artistId">
+      <DasType>int(11)|0s</DasType>
+      <Position>5</Position>
+    </column>
+    <foreign-key id="350" parent="329" name="FK_62f595181306916265849fced48">
+      <ColNames>artistId</ColNames>
+      <RefColNames>id</RefColNames>
+      <RefTableName>artists</RefTableName>
+    </foreign-key>
+    <index id="351" parent="329" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <index id="352" parent="329" name="FK_62f595181306916265849fced48">
+      <ColNames>artistId</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="353" parent="329" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="354" parent="330" name="id">
+      <AutoIncrement>3</AutoIncrement>
+      <DasType>int(11)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="355" parent="330" name="emailAddress">
+      <DasType>varchar(255)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="356" parent="330" name="passwordHash">
+      <DasType>varchar(255)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <column id="357" parent="330" name="firstName">
+      <DasType>varchar(255)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+    </column>
+    <column id="358" parent="330" name="lastName">
+      <DasType>varchar(255)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+    </column>
+    <index id="359" parent="330" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <index id="360" parent="330" name="IDX_0a15e52405edda3ea73124ab40">
+      <ColNames>emailAddress</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="361" parent="330" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <key id="362" parent="330" name="IDX_0a15e52405edda3ea73124ab40">
       <UnderlyingIndexName>IDX_0a15e52405edda3ea73124ab40</UnderlyingIndexName>
     </key>
   </database-model>

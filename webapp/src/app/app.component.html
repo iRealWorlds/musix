@@ -1,30 +1,34 @@
 <div class="flex flex-col justify-between min-h-screen">
-    <mat-toolbar color="primary" class="flex items-center justify-between">
-        <span>MusiX</span>
+  <mat-toolbar color="primary" class="flex items-center justify-between">
+    <div class="flex items-center gap-5">
+      <span>MusiX</span>
+      <a routerLink="/tracks" mat-button routerLinkActive="bg-white/20">Your library</a>
+      <a routerLink="/artists" mat-button routerLinkActive="bg-white/20">Artists</a>
+    </div>
 
-        <div class="flex items-center gap-5">
-            <!-- Current user -->
-            <ng-container *ngIf="currentUser$ | async as user; else guestTemplate">
-                <button mat-button [matMenuTriggerFor]="userMenu">
-                    <mat-icon class="scale-125">person</mat-icon>
-                    {{ user.firstName }} {{ user.lastName }}
-                </button>
-                <mat-menu #userMenu="matMenu">
-                    <a routerLink="/auth/sign-out" mat-menu-item>
-                        <mat-icon>power_settings_new</mat-icon>
-                        <span>Sign out</span>
-                    </a>
-                </mat-menu>
-            </ng-container>
-            <ng-template #guestTemplate>
-                <a routerLink="/auth/sign-in" mat-button>Sign in</a>
-                <a routerLink="/auth/sign-up" mat-button>Create account</a>
-            </ng-template>
+    <div class="flex items-center gap-5">
+      <!-- Current user -->
+      <ng-container *ngIf="currentUser$ | async as user; else guestTemplate">
+        <button mat-button [matMenuTriggerFor]="userMenu">
+          <mat-icon class="scale-125">person</mat-icon>
+          {{ user.firstName }} {{ user.lastName }}
+        </button>
+        <mat-menu #userMenu="matMenu">
+          <a routerLink="/auth/sign-out" mat-menu-item>
+            <mat-icon>power_settings_new</mat-icon>
+            <span>Sign out</span>
+          </a>
+        </mat-menu>
+      </ng-container>
+      <ng-template #guestTemplate>
+        <a routerLink="/auth/sign-in" mat-button>Sign in</a>
+        <a routerLink="/auth/sign-up" mat-button>Create account</a>
+      </ng-template>
 
-        </div>
-    </mat-toolbar>
+    </div>
+  </mat-toolbar>
 
-    <main class="grow bg-[#303030] py-10">
-        <router-outlet></router-outlet>
-    </main>
+  <main class="grow bg-[#303030] py-10">
+    <router-outlet></router-outlet>
+  </main>
 </div>
