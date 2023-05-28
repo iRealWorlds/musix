@@ -1,8 +1,6 @@
 import { Module } from "@nestjs/common";
 import { ConfigModule, ConfigService } from "@nestjs/config";
 import { TypeOrmModule } from "@nestjs/typeorm";
-import { AppController } from "@api/app.controller";
-import { AppService } from "@api/app.service";
 import { AuthModule } from "@api/auth/auth.module";
 import { UserModule } from "@api/user/user.module";
 import { TypeOrmConfig } from "@api/database/typeorm.config";
@@ -23,7 +21,7 @@ import { TracksModule } from './tracks/tracks.module';
     ArtistsModule,
     TracksModule
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}

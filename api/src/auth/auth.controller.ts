@@ -17,7 +17,9 @@ import { SessionCreateDto } from "@api/auth/dtos/session-create.dto";
 import { UserService } from "@api/user/user.service";
 import { AuthSessionDto } from "@api/auth/dtos/auth-session.dto";
 import { User } from "@api/database/entities/user.entity";
+import { ApiTags } from "@nestjs/swagger";
 
+@ApiTags("AuthSessions")
 @Controller('auth-sessions')
 export class AuthController {
     /**

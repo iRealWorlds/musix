@@ -4,7 +4,9 @@ import { UserService } from "@api/user/user.service";
 import { User } from "@api/database/entities/user.entity";
 import * as bcrypt from "bcrypt";
 import { UserDto } from "@api/user/dtos/user.dto";
+import { ApiTags } from "@nestjs/swagger";
 
+@ApiTags("Users")
 @Controller('users')
 export class UserController {
     /**
